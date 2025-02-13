@@ -38,7 +38,5 @@ export class ProductService {
       }
     })
   }
-  getProduct(id: number) {
-    return this.http.get<AppUser>(this.baseUrl + "products/" + id)
-  }
+  
 }
