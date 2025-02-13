@@ -1,0 +1,29 @@
+[
+  {
+    "UserName": "jerigray@magnina.com",
+    "FirstName": "Christine",
+    "LastName": "Wingfield",
+    "AddressLine1": "2 Main Street",
+    "StartDate": "2019-08-30",
+    "Phone": "703-473-5725",
+    "RoleId": 1
+  },
+  {
+    "UserName": "tammiegray@magnina.com",
+    "FirstName": "Tammie",
+    "LastName": "Gray",
+    "AddressLine1": "1 Main Street",
+    "StartDate": "2024-08-30",
+    "Phone": "703-473-5725",
+    "RoleId": 2
+  },
+  {
+    "UserName": "henn@magnina.com",
+    "FirstName": "Hennie",
+    "LastName": "Pennie",
+    "AddressLine1": "3 Main Street",
+    "StartDate": "2019-08-30",
+    "Phone": "703-473-5725",
+    "RoleId": 3
+  }
+]

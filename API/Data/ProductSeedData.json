@@ -1,0 +1,57 @@
+[
+  {
+    "ProductName": "Wiggins",
+    "Manufacturer": "Morales",
+    "Style": "Mountain",
+    "PurchaseDate": "2024-04-05",
+    "PurchasePrice": 110.99,
+    "SalePrice": 250,
+    "DiscountPercentage": 0.2,
+    "QuantityOH": 5,
+    "Active": true
+  },
+  {
+    "ProductName": "Strong",
+    "Manufacturer": "Sargent",
+    "Style": "Mountain",
+    "PurchaseDate": "2024-06-12",
+    "PurchasePrice": 150.99,
+    "SalePrice": 300.00,
+    "DiscountPercentage": 0.2,
+    "QuantityOH": 4,
+    "Active": true
+  },
+  {
+    "ProductName": "Tucker",
+    "Manufacturer": "Castillo",
+    "Style": "Mountain",
+    "PurchaseDate": "2024-11-13",
+    "PurchasePrice": 180.99,
+    "SalePrice": 249.99,
+    "DiscountPercentage": 0.2,
+    "QuantityOH": 1,
+    "Active": true
+  },
+  {
+    "ProductName": "Noble",
+    "Manufacturer": "Thompson",
+    "Style": "All Terain",
+    "PurchaseDate": "2024-04-07",
+    "PurchasePrice": 110.99,
+    "SalePrice": 250,
+    "DiscountPercentage": 0.2,
+    "QuantityOH": 5,
+    "Active": true
+  },
+  {
+    "ProductName": "Everett",
+    "Manufacturer": "Heath",
+    "Style": "Generic",
+    "PurchaseDate": "2024-05-12",
+    "PurchasePrice": 110.99,
+    "SalePrice": 250,
+    "DiscountPercentage": 0.2,
+    "QuantityOH": 5,
+    "Active": true
+  }
+]
