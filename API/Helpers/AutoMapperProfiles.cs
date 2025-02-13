@@ -13,7 +13,7 @@ namespace API.Helpers
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Name));
             CreateMap<Product, ProductDTO>();
 
-            CreateMap<Sale, SalesDTO>()
+            CreateMap<Sale, SaleDTO>()
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName))
                 .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.UserName))
                 .ForMember(dest => dest.SalesRepName, opt => opt.MapFrom(src => src.SalesRep.UserName));

@@ -18,11 +18,33 @@ namespace API.Data
         }
 
        
-        public async Task<IEnumerable<SalesDTO>> GetSalesAsync()
+        public async Task<IEnumerable<SaleDTO>> GetSalesAsync()
         {
-            return await context.Sales
-               .ProjectTo<SalesDTO>(mapper.ConfigurationProvider)
-               .ToListAsync();
+            var sales = await context.Sales
+                .ProjectTo<SaleDTO>(mapper.ConfigurationProvider)
+                .ToListAsync();
+
+            foreach (var sale in sales)
+            {
+                var username = sale.SalesRepName;
+                //get commission rate from sales rep
+                var salesRepId = context.Users
+                    .Where(x => x.UserName == username)
+                    .Select(x => x.AppUserId)
+                    .FirstOrDefault();
+
+                var comm = context.UserCommissions
+                        .Where(x => x.Active == true)
+                        .Where(x => x.SalesRepId == salesRepId).FirstOrDefault();
+                if (comm != null)
+                {
+                    sale.Commission = comm.CommissionPercentage * sale.ProductSoldPrice;
+                }
+
+            };
+
+            return sales;
+
         }
         public async Task<bool> SaveAllAsync()
         {

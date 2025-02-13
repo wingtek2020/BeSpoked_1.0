@@ -9,7 +9,7 @@ namespace API.Interfaces
     {
         void Update(Sale sale);
         Task<bool> SaveAllAsync();
-        Task<IEnumerable<SalesDTO>> GetSalesAsync();
+        Task<IEnumerable<SaleDTO>> GetSalesAsync();
         Task<Sale?> GetSale(int id);
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace API.Migrations
 {
     /// <inheritdoc />
-    public partial class initialcreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -95,7 +95,7 @@ namespace API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Sales",
+                name: "Sale",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -109,21 +109,21 @@ namespace API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sales", x => x.Id);
+                    table.PrimaryKey("PK_Sale", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sales_AppUser_CustomerId",
+                        name: "FK_Sale_AppUser_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "AppUser",
                         principalColumn: "AppUserId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Sales_AppUser_SalesRepId",
+                        name: "FK_Sale_AppUser_SalesRepId",
                         column: x => x.SalesRepId,
                         principalTable: "AppUser",
                         principalColumn: "AppUserId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Sales_Product_ProductId",
+                        name: "FK_Sale_Product_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Product",
                         principalColumn: "ProductId",
@@ -136,7 +136,7 @@ namespace API.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AppUserId = table.Column<int>(type: "int", nullable: false),
+                    SalesRepId = table.Column<int>(type: "int", nullable: false),
                     CommissionPercentage = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -144,8 +144,8 @@ namespace API.Migrations
                 {
                     table.PrimaryKey("PK_UserCommission", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserCommission_AppUser_AppUserId",
-                        column: x => x.AppUserId,
+                        name: "FK_UserCommission_AppUser_SalesRepId",
+                        column: x => x.SalesRepId,
                         principalTable: "AppUser",
                         principalColumn: "AppUserId",
                         onDelete: ReferentialAction.Restrict);
@@ -162,24 +162,24 @@ namespace API.Migrations
                 column: "SalesRepAppUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_CustomerId",
-                table: "Sales",
+                name: "IX_Sale_CustomerId",
+                table: "Sale",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_ProductId",
-                table: "Sales",
+                name: "IX_Sale_ProductId",
+                table: "Sale",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sales_SalesRepId",
-                table: "Sales",
+                name: "IX_Sale_SalesRepId",
+                table: "Sale",
                 column: "SalesRepId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_UserCommission_AppUserId",
+                name: "IX_UserCommission_SalesRepId",
                 table: "UserCommission",
-                column: "AppUserId");
+                column: "SalesRepId");
         }
 
         /// <inheritdoc />
@@ -189,7 +189,7 @@ namespace API.Migrations
                 name: "AppUserAppUser (Dictionary<string, object>)");
 
             migrationBuilder.DropTable(
-                name: "Sales");
+                name: "Sale");
 
             migrationBuilder.DropTable(
                 name: "UserCommission");

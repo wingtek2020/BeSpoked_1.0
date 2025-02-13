@@ -11,6 +11,7 @@ namespace API.Data
 {
     public class SeedData
     {
+       
         public static async Task SeedRoles(DataContext context)
         {
             if (await context.Roles.AnyAsync()) return;
@@ -57,6 +58,23 @@ namespace API.Data
             {
                 context.Products.Add(product);
             }
+            await context.SaveChangesAsync();
+        }
+
+        public static async Task SeedSales(DataContext context)
+        {
+            if (await context.Sales.AnyAsync()) return;
+
+            var sale = new Sale(1, 5, 2, 200, 3);
+            context.Sales.Add(sale);            
+            await context.SaveChangesAsync();
+        }
+        public static async Task SeedCommission(DataContext context)
+        {
+            if (await context.UserCommissions.AnyAsync()) return;
+            decimal commission = 0.05m;
+            var comm = new UserCommission(3, commission);
+            context.UserCommissions.Add(comm);
             await context.SaveChangesAsync();
         }
 

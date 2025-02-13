@@ -43,6 +43,8 @@ try
     await SeedData.SeedRoles(context);
     await SeedData.SeedUsers(context);
     await SeedData.SeedProducts(context);
+    await SeedData.SeedSales(context);
+    await SeedData.SeedCommission(context);
 
 }
 catch (Exception ex)

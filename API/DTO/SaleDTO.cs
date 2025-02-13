@@ -4,7 +4,7 @@ using System;
 
 namespace API.DTO
 {
-    public class SalesDTO
+    public class SaleDTO
     {
         public int Id { get; set; }
         public required string ProductName { get; set; }
@@ -14,5 +14,6 @@ namespace API.DTO
         public DateTime ProductSoldDate { get; set; }
         [Column(TypeName = "decimal(18, 8)")]
         public decimal ProductSoldPrice { get; set; }
+        public decimal Commission { get; set; }
     }
 }

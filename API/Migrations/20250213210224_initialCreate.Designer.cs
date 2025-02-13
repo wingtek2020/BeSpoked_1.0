@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250213164754_initialcreate")]
-    partial class initialcreate
+    [Migration("20250213210224_initialCreate")]
+    partial class initialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -125,7 +125,7 @@ namespace API.Migrations
                     b.ToTable("Role");
                 });
 
-            modelBuilder.Entity("API.Entities.Sales", b =>
+            modelBuilder.Entity("API.Entities.Sale", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,7 @@ namespace API.Migrations
 
                     b.HasIndex("SalesRepId");
 
-                    b.ToTable("Sales");
+                    b.ToTable("Sale");
                 });
 
             modelBuilder.Entity("API.Entities.UserCommission", b =>
@@ -173,15 +173,15 @@ namespace API.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("CommissionPercentage")
                         .HasColumnType("decimal(18, 8)");
 
+                    b.Property<int>("SalesRepId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("AppUserId");
+                    b.HasIndex("SalesRepId");
 
                     b.ToTable("UserCommission");
                 });
@@ -212,7 +212,7 @@ namespace API.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("API.Entities.Sales", b =>
+            modelBuilder.Entity("API.Entities.Sale", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "Customer")
                         .WithMany()
@@ -241,13 +241,13 @@ namespace API.Migrations
 
             modelBuilder.Entity("API.Entities.UserCommission", b =>
                 {
-                    b.HasOne("API.Entities.AppUser", "AppUser")
+                    b.HasOne("API.Entities.AppUser", "SalesRep")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
+                        .HasForeignKey("SalesRepId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("AppUser");
+                    b.Navigation("SalesRep");
                 });
 
             modelBuilder.Entity("AppUserAppUser", b =>
