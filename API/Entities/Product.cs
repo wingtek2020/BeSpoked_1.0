@@ -20,7 +20,7 @@ namespace API.Entities
         public decimal DiscountPercentage { get; set; }
         public int QuantityOH { get; set; } = 0;
         public bool Active { get; set; }
-        public List<Sales>? Sales { get; set; }
+        public List<Sale>? Sales { get; set; }
 
     }
 }

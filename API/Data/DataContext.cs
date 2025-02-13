@@ -34,7 +34,7 @@ namespace API.Data
         public required DbSet<Role> Roles { get; set; }
         public required DbSet<Product> Products { get; set; }
         public required DbSet<UserCommission> UserCommissions { get; set; }
-        public required DbSet<Sales> Sales { get; set; }
+        public required DbSet<Sale> Sales { get; set; }
     }
     
     

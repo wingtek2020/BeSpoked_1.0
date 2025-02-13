@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
 {
-    public class Sales
+    public class Sale
     {
         public int Id { get; set; }
         [ForeignKey("ProductId")]

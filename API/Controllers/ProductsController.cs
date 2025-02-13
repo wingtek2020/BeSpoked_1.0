@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using API.Data;
-using API.Entities;
+﻿using API.Entities;
 using API.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -15,7 +10,7 @@ namespace API.Controllers
     [ApiController]
     public class ProductsController(IProductRepository productRepository) : ControllerBase
     {
-        // GET: api/AppUsers
+        // GET: api/Products
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
@@ -25,7 +20,7 @@ namespace API.Controllers
         }
 
      
-        // GET: api/AppUsers/5
+       
         [HttpGet("{id}")]
         public async Task<ActionResult<AppUser>> GetProduct(int id)
         {

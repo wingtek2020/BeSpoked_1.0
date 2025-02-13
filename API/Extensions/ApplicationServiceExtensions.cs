@@ -23,6 +23,7 @@ namespace API.Extensions
             //services created
             services.AddScoped<IAppUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ISalesRepository, SalesRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             return services;
