@@ -38,7 +38,7 @@ namespace API.Data
                         .Where(x => x.SalesRepId == salesRepId).FirstOrDefault();
                 if (comm != null)
                 {
-                    sale.Commission = comm.CommissionPercentage * sale.ProductSoldPrice;
+                    sale.Commission = comm.CommissionPercentage * sale.ProductSoldPrice * sale.Quantity;
                 }
 
             };
