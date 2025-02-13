@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Entities
@@ -19,6 +20,7 @@ namespace API.Entities
         public decimal DiscountPercentage { get; set; }
         public int QuantityOH { get; set; } = 0;
         public bool Active { get; set; }
+        public List<Sales>? Sales { get; set; }
 
     }
 }

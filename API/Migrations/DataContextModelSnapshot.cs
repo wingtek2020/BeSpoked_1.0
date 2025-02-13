@@ -59,7 +59,7 @@ namespace API.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("Users");
+                    b.ToTable("AppUser");
                 });
 
             modelBuilder.Entity("API.Entities.Product", b =>
@@ -102,7 +102,7 @@ namespace API.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Product");
                 });
 
             modelBuilder.Entity("API.Entities.Role", b =>
@@ -119,7 +119,44 @@ namespace API.Migrations
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role");
+                });
+
+            modelBuilder.Entity("API.Entities.Sales", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ProductSoldDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("ProductSoldPrice")
+                        .HasColumnType("decimal(18, 8)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SalesRepId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("SalesRepId");
+
+                    b.ToTable("Sales");
                 });
 
             modelBuilder.Entity("API.Entities.UserCommission", b =>
@@ -143,7 +180,22 @@ namespace API.Migrations
 
                     b.HasIndex("AppUserId");
 
-                    b.ToTable("UserCommissions");
+                    b.ToTable("UserCommission");
+                });
+
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.Property<int>("CustomerAppUserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SalesRepAppUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CustomerAppUserId", "SalesRepAppUserId");
+
+                    b.HasIndex("SalesRepAppUserId");
+
+                    b.ToTable("AppUserAppUser (Dictionary<string, object>)");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
@@ -151,10 +203,37 @@ namespace API.Migrations
                     b.HasOne("API.Entities.Role", "Role")
                         .WithMany("Users")
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("API.Entities.Sales", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.Product", "Product")
+                        .WithMany("Sales")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", "SalesRep")
+                        .WithMany()
+                        .HasForeignKey("SalesRepId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("SalesRep");
                 });
 
             modelBuilder.Entity("API.Entities.UserCommission", b =>
@@ -162,10 +241,30 @@ namespace API.Migrations
                     b.HasOne("API.Entities.AppUser", "AppUser")
                         .WithMany()
                         .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("AppUserAppUser", b =>
+                {
+                    b.HasOne("API.Entities.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("CustomerAppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("API.Entities.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("SalesRepAppUserId")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("API.Entities.Product", b =>
+                {
+                    b.Navigation("Sales");
                 });
 
             modelBuilder.Entity("API.Entities.Role", b =>

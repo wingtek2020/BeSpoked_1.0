@@ -19,6 +19,8 @@ namespace API.Entities
 
         public int RoleId { get; set; }
         public Role? Role { get; set; }
+        public List<AppUser>? Customer { get; set; }
+        public List<AppUser>? SalesRep { get; set; }
 
     }
 }
