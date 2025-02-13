@@ -8,6 +8,7 @@ namespace API.Data
         public required DbSet<AppUser> Users { get; set; }
         public required DbSet<Role> Roles { get; set; }
         public required DbSet<Product> Products { get; set; }
+        public required DbSet<UserCommission> UserCommissions { get; set; }
     }
 
 }

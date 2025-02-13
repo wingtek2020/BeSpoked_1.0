@@ -260,7 +260,7 @@
         ],
         "type": "object",
         "properties": {
-          "id": {
+          "productId": {
             "type": "integer",
             "format": "int32"
           },

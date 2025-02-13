@@ -8,8 +8,6 @@ namespace API.Entities
     {
         public int RoleId { get; set; }
         public required string Name { get; set; }
-
-
         public List<AppUser>? Users { get; set; }
     }
 }

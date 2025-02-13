@@ -1,11 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace API.Entities
+namespace API.DTO
 {
-    public class Product
+    public class ProductDTO
     {
-  
         public int ProductId { get; set; }
         public required string ProductName { get; set; }
         public required string Manufacturer { get; set; }
@@ -19,6 +18,5 @@ namespace API.Entities
         public decimal DiscountPercentage { get; set; }
         public int QuantityOH { get; set; } = 0;
         public bool Active { get; set; }
-
     }
 }

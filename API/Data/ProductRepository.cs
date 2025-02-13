@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace API.Data
 {
-    public class ProductRepository(DataContext context) : IProductRepository
+    public class ProductRepository(DataContext context, IMapper mapper) : IProductRepository
     {
         public Task<AppUser?> GetProduct(int id)
         {
@@ -20,14 +20,16 @@ namespace API.Data
         public async Task<Product?> GetProductAsync(int id)
         {
             return await context.Products
-                .Where(x => x.Id == id)
+                .Where(x => x.ProductId == id)
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Product>> GetProductsAsync()
+        public async Task<IEnumerable<ProductDTO>> GetProductsAsync()
         {
             return await context.Products
-                .ToListAsync();
+               .Where(x => x.Active)
+               .ProjectTo<ProductDTO>(mapper.ConfigurationProvider)
+               .ToListAsync();
         }
         public async Task<bool> SaveAllAsync()
         {
@@ -39,11 +41,6 @@ namespace API.Data
         {
             context.Entry(product).State = EntityState.Modified;
 
-        }
-
-        Task<IEnumerable<Product[]>> IProductRepository.GetProductsAsync()
-        {
-            throw new System.NotImplementedException();
         }
     }
 

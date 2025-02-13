@@ -525,10 +525,11 @@ C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets\msbuild.build.API.props
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API.props
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API.props
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets.pack.json
-C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\API.csproj.Up2Date
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\API.dll
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\refint\API.dll
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\API.pdb
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\BeSpoked_1.0\API\obj\Debug\net8.0\ref\API.dll
+C:\BeSpoked_1.0\API\obj\Debug\net8.0\API.sourcelink.json
+C:\BeSpoked_1.0\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

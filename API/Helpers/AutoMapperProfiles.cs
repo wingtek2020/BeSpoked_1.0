@@ -10,6 +10,7 @@ namespace API.Helpers
         {
             CreateMap<AppUser, UserDTO>()
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => src.Role.Name));
+            CreateMap<Product, ProductDTO>();
         }
     }
 }
