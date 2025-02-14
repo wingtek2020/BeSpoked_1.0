@@ -17,7 +17,6 @@ namespace API.Entities
         [Column(TypeName = "decimal(18, 8)")]
         public decimal SalePrice { get; set; }
         [Column(TypeName = "decimal(18, 8)")]
-        public decimal DiscountPercentage { get; set; }
         public int QuantityOH { get; set; } = 0;
         public bool Active { get; set; }
         public List<Sale>? Sales { get; set; }

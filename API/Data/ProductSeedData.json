@@ -6,7 +6,6 @@
     "PurchaseDate": "2024-04-05",
     "PurchasePrice": 110.99,
     "SalePrice": 250,
-    "DiscountPercentage": 0.2,
     "QuantityOH": 5,
     "Active": true
   },
@@ -17,7 +16,6 @@
     "PurchaseDate": "2024-06-12",
     "PurchasePrice": 150.99,
     "SalePrice": 300.00,
-    "DiscountPercentage": 0.2,
     "QuantityOH": 4,
     "Active": true
   },
@@ -28,7 +26,6 @@
     "PurchaseDate": "2024-11-13",
     "PurchasePrice": 180.99,
     "SalePrice": 249.99,
-    "DiscountPercentage": 0.2,
     "QuantityOH": 1,
     "Active": true
   },
@@ -39,7 +36,6 @@
     "PurchaseDate": "2024-04-07",
     "PurchasePrice": 110.99,
     "SalePrice": 250,
-    "DiscountPercentage": 0.2,
     "QuantityOH": 5,
     "Active": true
   },
@@ -50,7 +46,6 @@
     "PurchaseDate": "2024-05-12",
     "PurchasePrice": 110.99,
     "SalePrice": 250,
-    "DiscountPercentage": 0.2,
     "QuantityOH": 5,
     "Active": true
   }

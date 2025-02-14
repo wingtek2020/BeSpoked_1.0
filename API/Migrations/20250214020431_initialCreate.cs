@@ -23,8 +23,7 @@ namespace API.Migrations
                     PurchasePrice = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
                     PurchaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SalePrice = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
-                    DiscountPercentage = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
-                    QuantityOH = table.Column<int>(type: "int", nullable: false),
+                    QuantityOH = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -43,6 +42,30 @@ namespace API.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Role", x => x.RoleId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Discount",
+                columns: table => new
+                {
+                    DiscountId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DiscountName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    DiscountPercentage = table.Column<decimal>(type: "decimal(18,8)", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Discount", x => x.DiscountId);
+                    table.ForeignKey(
+                        name: "FK_Discount_Product_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Product",
+                        principalColumn: "ProductId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,6 +185,11 @@ namespace API.Migrations
                 column: "SalesRepAppUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Discount_ProductId",
+                table: "Discount",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Sale_CustomerId",
                 table: "Sale",
                 column: "CustomerId");
@@ -187,6 +215,9 @@ namespace API.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AppUserAppUser (Dictionary<string, object>)");
+
+            migrationBuilder.DropTable(
+                name: "Discount");
 
             migrationBuilder.DropTable(
                 name: "Sale");

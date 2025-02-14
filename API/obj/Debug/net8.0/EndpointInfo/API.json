@@ -458,10 +458,6 @@
             "type": "number",
             "format": "double"
           },
-          "discountPercentage": {
-            "type": "number",
-            "format": "double"
-          },
           "quantityOH": {
             "type": "integer",
             "format": "int32"

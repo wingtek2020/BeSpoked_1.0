@@ -62,6 +62,40 @@ namespace API.Migrations
                     b.ToTable("AppUser");
                 });
 
+            modelBuilder.Entity("API.Entities.Discount", b =>
+                {
+                    b.Property<int>("DiscountId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DiscountId"));
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DiscountName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("DiscountPercentage")
+                        .HasColumnType("decimal(18, 8)");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("DiscountId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Discount");
+                });
+
             modelBuilder.Entity("API.Entities.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -72,9 +106,6 @@ namespace API.Migrations
 
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
-
-                    b.Property<decimal>("DiscountPercentage")
-                        .HasColumnType("decimal(18, 8)");
 
                     b.Property<string>("Manufacturer")
                         .IsRequired()
@@ -90,8 +121,8 @@ namespace API.Migrations
                     b.Property<decimal>("PurchasePrice")
                         .HasColumnType("decimal(18, 8)");
 
-                    b.Property<int>("QuantityOH")
-                        .HasColumnType("int");
+                    b.Property<decimal>("QuantityOH")
+                        .HasColumnType("decimal(18, 8)");
 
                     b.Property<decimal>("SalePrice")
                         .HasColumnType("decimal(18, 8)");
@@ -207,6 +238,17 @@ namespace API.Migrations
                         .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("API.Entities.Discount", b =>
+                {
+                    b.HasOne("API.Entities.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("API.Entities.Sale", b =>
